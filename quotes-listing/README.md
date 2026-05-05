@@ -3,11 +3,9 @@
 A quotes browsing app built with React and Tailwind CSS using FreeAPI.
 
 ## Live Demo
-[your-app.netlify.app](#)
-
+https://react-project-cohort-2026-v7mv.vercel.app/
 ## GitHub
-[github.com/yourusername/quotes-listing](#)
-
+https://github.com/iamdipanshugupta/React-Project-Cohort-2026/tree/main/quotes-listing
 ## What it does
 Fetches and displays quotes with author name, tags, and date. 30 pages, 300 total quotes.
 
