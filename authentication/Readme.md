@@ -3,10 +3,10 @@
 A vanilla JavaScript authentication app using FreeAPI auth endpoints.
 
 ## Live Demo
-[your-app.netlify.app](#)
+https://react-project-cohort-2026-f4ll.vercel.app/
 
 ## GitHub
-[github.com/yourusername/auth-app](#)
+https://github.com/iamdipanshugupta/React-Project-Cohort-2026/tree/main/authentication
 
 ## Features
 - Register new account
