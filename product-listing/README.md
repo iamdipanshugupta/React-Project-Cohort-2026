@@ -3,11 +3,9 @@
 A simple e-commerce product listing app built with React and Tailwind CSS using FreeAPI.
 
 ## Live Demo
-[your-app.netlify.app](#)
-
+https://react-project-cohort-2026-e3sq.vercel.app/
 ## GitHub
-[github.com/yourusername/product-listing](#)
-
+https://github.com/iamdipanshugupta/React-Project-Cohort-2026/tree/main/product-listing
 ## What it does
 Fetches and displays products in a clean grid layout with price, rating, discount, stock status and more.
 

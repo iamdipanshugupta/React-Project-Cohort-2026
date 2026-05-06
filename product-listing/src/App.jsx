@@ -20,66 +20,91 @@ function App() {
   }, [page])
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      
-      {/* Header */}
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-900 mb-1">🛍️ Products</h1>
-        <p className="text-gray-500 mb-8">Page {page} of {totalPages}</p>
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 px-4 py-10 sm:px-6 sm:py-16">
+      <div className="mx-auto max-w-7xl">
+
+        {/* Header Section */}
+        <div className="mb-12 text-center">
+          <p className="text-sm uppercase tracking-[0.32em] text-amber-400/80 mb-3">Curated Collection</p>
+          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+            🛍️ Premium Products
+          </h1>
+          <p className="mx-auto max-w-2xl text-sm sm:text-base text-slate-300">
+            Discover our exclusive selection of high-quality products with amazing discounts
+          </p>
+          <p className="mt-4 text-sm text-slate-400 font-medium">
+            Page <span className="text-amber-400 font-bold">{page}</span> of <span className="text-amber-400 font-bold">{totalPages}</span>
+          </p>
+        </div>
 
         {loading ? (
-          <p className="text-center text-gray-400 py-20">Loading products...</p>
+          <div className="col-span-full rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-16 text-center">
+            <div className="inline-flex items-center justify-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-400"></div>
+            </div>
+            <p className="mt-4 text-slate-300 text-lg">Loading premium products...</p>
+          </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {products.map((product) => (
-              <div key={product.id} className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-md transition">
-                
-                {/* Image */}
-                <div className="bg-gray-100 p-4 flex items-center justify-center h-48">
+              <div
+                key={product.id}
+                className="group rounded-3xl border border-white/10 bg-slate-900/80 backdrop-blur-xl overflow-hidden shadow-2xl shadow-slate-950/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-amber-500/20 hover:shadow-2xl"
+              >
+                {/* Image Container */}
+                <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 p-4 flex items-center justify-center h-56 overflow-hidden">
                   <img
-                    src={product.images}
+                    src={`https://dummyjson.com/products/${product.id}/thumbnail`}
                     alt={product.title}
                     className="h-full object-contain"
+                    onError={(e) => {
+                      e.target.onerror = null
+                      e.target.src = `https://placehold.co/200x200/gray/white?text=${product.title.charAt(0)}`
+                    }}
                   />
+                  {product.discountPercentage && (
+                    <div className="absolute top-3 right-3 bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                      -{product.discountPercentage}%
+                    </div>
+                  )}
                 </div>
 
-                <div className="p-4 space-y-2">
+                {/* Content */}
+                <div className="p-5 space-y-3">
                   {/* Title */}
-                  <h2 className="font-semibold text-gray-900 text-sm line-clamp-2">{product.title}</h2>
+                  <h2 className="font-bold text-white text-sm line-clamp-2 group-hover:text-amber-300 transition-colors">
+                    {product.title}
+                  </h2>
 
-                  {/* Category */}
-                  <span className="bg-blue-50 text-blue-600 text-xs px-2 py-1 rounded-full">
-                    {product.category}
-                  </span>
-
-                  {/* Brand */}
-                  {product.brand && (
-                    <p className="text-gray-400 text-xs">Brand: {product.brand}</p>
-                  )}
-
-                  {/* Rating */}
-                  <div className="flex items-center gap-1">
-                    <span className="text-yellow-400 text-sm">★</span>
-                    <span className="text-gray-600 text-xs">{product.rating} / 5</span>
+                  {/* Category Badge */}
+                  <div className="flex items-center gap-2">
+                    <span className="inline-flex bg-gradient-to-r from-amber-500/20 to-orange-500/20 text-amber-200 text-xs px-3 py-1 rounded-full border border-amber-500/30 font-medium">
+                      {product.category}
+                    </span>
                   </div>
 
-                  {/* Price + Discount */}
-                  <div className="flex items-center justify-between pt-1">
-                    <span className="text-gray-900 font-bold">${product.price}</span>
-                    {product.discountPercentage && (
-                      <span className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">
-                        -{product.discountPercentage}%
-                      </span>
-                    )}
+                  {/* Brand + Rating */}
+                  <div className="flex items-center justify-between text-xs text-slate-300">
+                    {product.brand && <span className="font-medium text-slate-200">{product.brand}</span>}
+                    <div className="flex items-center gap-1">
+                      <span className="text-amber-400">★</span>
+                      <span className="font-semibold">{product.rating}/5</span>
+                    </div>
                   </div>
-
-                  {/* Stock */}
-                  <p className={`text-xs ${product.stock < 10 ? "text-red-500" : "text-green-600"}`}>
-                    {product.stock < 10 ? `Only ${product.stock} left!` : `In Stock: ${product.stock}`}
-                  </p>
 
                   {/* Description */}
-                  <p className="text-gray-400 text-xs line-clamp-2">{product.description}</p>
+                  <p className="text-xs text-slate-400 line-clamp-2">{product.description}</p>
+
+                  {/* Price Section */}
+                  <div className="flex items-center justify-between pt-3 border-t border-white/10">
+                    <span className="text-xl font-bold text-white">${product.price}</span>
+                    <span className={`text-xs font-bold px-2 py-1 rounded-full ${product.stock < 10
+                      ? "bg-red-500/20 text-red-300"
+                      : "bg-green-500/20 text-green-300"
+                      }`}>
+                      {product.stock < 10 ? `${product.stock} left` : "In Stock"}
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}
@@ -87,19 +112,24 @@ function App() {
         )}
 
         {/* Pagination */}
-        <div className="flex justify-center items-center gap-4 mt-10">
+        <div className="flex justify-center items-center gap-6 mt-14">
           <button
             disabled={page <= 1}
             onClick={() => setPage((p) => p - 1)}
-            className="bg-gray-900 hover:bg-gray-700 disabled:opacity-40 text-white font-semibold px-5 py-2 rounded-full transition"
+            className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold px-6 py-3 rounded-full transition-all duration-300 shadow-lg shadow-amber-500/30 hover:shadow-amber-500/50"
           >
             ← Prev
           </button>
-          <span className="text-gray-500">{page} / {totalPages}</span>
+          <div className="flex items-center gap-2">
+            <span className="text-slate-300 text-sm">Page</span>
+            <span className="text-xl font-bold text-amber-400">{page}</span>
+            <span className="text-slate-300 text-sm">of</span>
+            <span className="text-xl font-bold text-amber-400">{totalPages}</span>
+          </div>
           <button
             disabled={page >= totalPages}
             onClick={() => setPage((p) => p + 1)}
-            className="bg-gray-900 hover:bg-gray-700 disabled:opacity-40 text-white font-semibold px-5 py-2 rounded-full transition"
+            className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold px-6 py-3 rounded-full transition-all duration-300 shadow-lg shadow-amber-500/30 hover:shadow-amber-500/50"
           >
             Next →
           </button>
