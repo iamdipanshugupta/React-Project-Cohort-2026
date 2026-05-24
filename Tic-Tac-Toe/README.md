@@ -1,16 +1,111 @@
-# React + Vite
+# 🎮 Tic Tac Toe Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and interactive Tic Tac Toe game built using React and Tailwind CSS.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+https://react-project-cohort-2026-gatv.vercel.app/
+---
 
-## React Compiler
+## 📌 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- ✅ 3x3 Tic Tac Toe Board
+- ✅ Two Player Turn System
+- ✅ Winner Detection
+- ✅ Draw Detection
+- ✅ Reset Game Functionality
+- ✅ Responsive Design
+- ✅ Modern UI with Tailwind CSS
+- ✅ Interactive Hover Effects
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+
+- React.js
+- Tailwind CSS
+- Vite
+
+---
+
+## 📂 Project Structure
+
+```bash
+src/
+│
+├── components/
+│   ├── Board.jsx
+│   └── Square.jsx
+│
+├── App.jsx
+├── main.jsx
+└── index.css
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+### Clone Repository
+
+```bash
+git clone https://github.com/iamdipanshugupta/React-Project-Cohort-2026/tree/main/Tic-Tac-Toe
+```
+
+### Go To Project Folder
+
+```bash
+cd tic-tac-toe
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Run Development Server
+
+```bash
+npm run dev
+```
+
+---
+
+## 🎯 Game Rules
+
+- Player X starts first
+- Players take turns marking spaces
+- First player to align 3 marks wins
+- If all boxes fill without a winner, the match is a draw
+
+---
+
+## 📸 UI Preview
+
+Modern glassmorphism UI with responsive layout and smooth animations.
+
+---
+
+## 🌐 Deployment
+
+You can deploy this project using:
+
+- Vercel
+https://react-project-cohort-2026-gatv.vercel.app/
+---
+
+## 📎 GitHub Repository
+
+https://github.com/iamdipanshugupta/React-Project-Cohort-2026/tree/main/Tic-Tac-Toe
+---
+
+## 👨‍💻 Author
+
+Dipanshu
+
+---
+
+## ⭐ If you like this project
+
+Give it a star on GitHub ⭐
